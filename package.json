@@ -11,12 +11,14 @@
     "start": "node build/server.js"
   },
   "devDependencies": {
-    "@types/node": "^20.14.9",
-    "tsup": "^8.1.0",
-    "tsx": "^4.16.0",
-    "typescript": "^5.5.2"
+    "@types/node": "20.14.9",
+    "tsup": "8.1.0",
+    "tsx": "4.16.0",
+    "typescript": "5.5.2"
   },
   "dependencies": {
-    "fastify": "^4.28.1"
+    "dotenv": "16.4.5",
+    "fastify": "4.28.1",
+    "zod": "3.23.8"
   }
 }
