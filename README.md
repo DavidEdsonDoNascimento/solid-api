@@ -33,3 +33,6 @@ Application for gym control
 - [ ] Application data needs to be persisted in a PostgreSQL database;
 - [ ] All data lists must be paginated with 20 items per page;
 - [ ] The user must be identified by a JWT (JSON Web Token)
+
+#### step by step to build a project like this:
+step-by-step.md

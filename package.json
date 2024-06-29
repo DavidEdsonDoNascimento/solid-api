@@ -1,0 +1,22 @@
+{
+  "name": "solid-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/DavidEdsonDoNascimento/solid-api.git",
+  "author": "DavidEdsonDoNascimento <david.contato.tec@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src --out-dir build",
+    "start": "node build/server.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "tsup": "^8.1.0",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "fastify": "^4.28.1"
+  }
+}
