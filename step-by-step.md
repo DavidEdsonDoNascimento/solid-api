@@ -91,3 +91,12 @@ yarn prisma migrate dev
 yarn prisma studio
 ```
 
+### the command from the $ install docker, created image through connection with bitnami/postgresql $ was translated to the file:
+docker-compose.yml
+
+### For the user to have access to the same environment that was mounted on my machine, simply execute the command below:
+```ch
+docker compose up -d
+```
+
+* -d 🠖 Detached mode i.e. run the container in the background
