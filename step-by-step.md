@@ -3,7 +3,7 @@
 ## Step By Step of project
 ### init package.json with:
 
-```js
+```ch
 yarn init -y
 ```
 
