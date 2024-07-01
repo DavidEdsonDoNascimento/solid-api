@@ -36,3 +36,31 @@ Application for gym control
 
 #### step by step to build a project like this:
 step-by-step.md
+
+## setup to run the application on your machine:
+
+#### Install dependencies
+```js
+yarn
+```
+
+### For the user to have access to the same environment that was mounted on my machine, simply execute the command below:
+```ch
+docker compose up -d
+```
+* -d 🠖 Detached mode i.e. run the container in the background
+
+** P.S: to stop all container images that the application is running (if you want): 
+```ch
+docker compose stop
+```
+
+#### run migrations
+```js
+yarn prisma migrate dev
+```
+
+#### run project
+```js
+yarn dev
+```
