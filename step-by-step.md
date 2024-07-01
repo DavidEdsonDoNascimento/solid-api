@@ -45,3 +45,49 @@ yarn add fastify
 ```js
 yarn add dotenv zod 
 ```
+
+### install docker, created image through connection with bitnami/postgresql
+```js
+docker run --name solid-api-pg -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker -e POSTGRESQL_DATABASE=solidapi -p 5432:5432 bitnami/postgresql
+```
+
+#### docker connect image
+```js
+docker start solid-api-pg
+```
+
+#### docker stop connect
+```js
+docker stop solid-api-pg 
+```
+
+#### docker images list
+```js
+docker ps -a
+```
+
+#### docker images list
+```js
+docker ps -a
+```
+
+#### if you want to delete the image
+```js
+docker rm solid-api-pg 
+```
+
+#### if you want to follow the docker image logs
+```js
+docker logs -f solid-api-pg 
+```
+
+### create first migration 🠖 create users
+```js
+yarn prisma migrate dev
+```
+
+### to view database data through the prisma
+```js
+yarn prisma studio
+```
+
