@@ -1,4 +1,4 @@
-# NodeJS + Typescript
+# NodeJS + Typescript + Prisma + Docker
 
 ## Step By Step of project
 ### init package.json with:
@@ -107,5 +107,8 @@ yarn add vitest vite-tsconfig-paths -D
 ```
 and configured vite.config.ts, test and test:watch in package.json
 
+### Pattern used in unit tests:
 
+**link to the article In Memory Test:** https://martinfowler.com/bliki/InMemoryTestDatabase.html
 
+This pattern was used in the creation of the repository found at: **src/repositories/in-memory**
