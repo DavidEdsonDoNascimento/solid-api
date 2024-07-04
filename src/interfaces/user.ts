@@ -1,4 +1,4 @@
-export interface IUser {
+interface IUser {
   id?: string;
   name: string;
   email: string;
@@ -7,13 +7,24 @@ export interface IUser {
   checkins?: any[];
 }
 
-export interface RegisterUseCaseRequest {
+interface RegisterUseCaseRequest {
   name: string;
   email: string;
   password: string;
 }
 
-export interface IUsersRepository {
+interface IUsersRepository {
   create(data: IUser): Promise<IUser>;
   findByEmail(email: string): Promise<IUser | null>;
 }
+
+interface RegisterUseCaseResponse {
+  user: IUser;
+}
+
+export {
+  IUser,
+  RegisterUseCaseRequest,
+  IUsersRepository,
+  RegisterUseCaseResponse,
+};

@@ -100,3 +100,12 @@ docker compose up -d
 ```
 
 * -d 🠖 Detached mode i.e. run the container in the background
+
+### dependencies installed for testing
+```ch
+yarn add vitest vite-tsconfig-paths -D
+```
+and configured vite.config.ts, test and test:watch in package.json
+
+
+
