@@ -3,6 +3,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { RegisterUseCase } from "@/use-cases/register";
 import { PrismaUsersRepository } from "@/repositories/prisma/prisma-users-repository";
 import { IUsersRepository } from "@/interfaces/user";
+import { UserAlreadyExistsError } from "@/use-cases/errors/user-already-exists-error";
 
 export const register = async (
   request: FastifyRequest,
@@ -25,7 +26,12 @@ export const register = async (
       password,
     });
   } catch (err) {
-    return response.status(409).send({ message: "Email already in use" });
+    if (err instanceof UserAlreadyExistsError) {
+      return response.status(409).send({
+        message: err.message,
+      });
+    }
+    throw err;
   }
 
   return response.status(201).send();

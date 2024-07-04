@@ -1,6 +1,6 @@
 import { IUsersRepository, RegisterUseCaseRequest } from "@/interfaces/user";
-import { prisma } from "@/lib/prisma";
 import { hash } from "bcryptjs";
+import { UserAlreadyExistsError } from "./errors/user-already-exists-error";
 
 // the use case is input and output model agnostic
 // D - Dependency Inversion Principle
@@ -13,7 +13,7 @@ export class RegisterUseCase {
     const userWithSameEmail = await this.usersRepository.findByEmail(email);
 
     if (userWithSameEmail) {
-      throw new Error("Email already in use");
+      throw new UserAlreadyExistsError();
     }
 
     await this.usersRepository.create({
