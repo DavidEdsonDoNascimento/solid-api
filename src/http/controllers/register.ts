@@ -1,6 +1,9 @@
-import { prisma } from "@/lib/prisma";
-import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
+import { FastifyReply, FastifyRequest } from "fastify";
+import { RegisterUseCase } from "@/use-cases/register";
+import { PrismaUsersRepository } from "@/repositories/prisma-users-repository";
+import { IUsersRepository } from "@/interfaces/user";
+import { InMemoryUsersRepository } from "@/repositories/in-memory-users-repository";
 
 export const register = async (
   request: FastifyRequest,
@@ -14,13 +17,17 @@ export const register = async (
 
   const { name, email, password } = registerBodySchema.parse(request.body);
 
-  await prisma.user.create({
-    data: {
+  try {
+    const usersRepository: IUsersRepository = new InMemoryUsersRepository();
+    const registerUseCase = new RegisterUseCase(usersRepository);
+    await registerUseCase.execute({
       name,
       email,
-      password_hash: password,
-    },
-  });
+      password,
+    });
+  } catch (err) {
+    return response.status(409).send({ message: "Email already in use" });
+  }
 
   return response.status(201).send();
 };
