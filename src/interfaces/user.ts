@@ -15,4 +15,5 @@ export interface RegisterUseCaseRequest {
 
 export interface IUsersRepository {
   create(data: IUser): Promise<IUser>;
+  findByEmail(email: string): Promise<IUser | null>;
 }

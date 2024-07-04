@@ -10,11 +10,7 @@ export class RegisterUseCase {
     // number of rounds that the encryption was done in addition to the one generated previously
     const password_hash = await hash(password, 6);
 
-    const userWithSameEmail = await prisma.user.findUnique({
-      where: {
-        email,
-      },
-    });
+    const userWithSameEmail = await this.usersRepository.findByEmail(email);
 
     if (userWithSameEmail) {
       throw new Error("Email already in use");
