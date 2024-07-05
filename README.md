@@ -64,3 +64,19 @@ yarn prisma migrate dev
 ```js
 yarn dev
 ```
+
+#### to view database data through the prisma
+```js
+yarn prisma studio
+```
+
+#### run tests
+```js
+yarn tests
+```
+
+##### To find out the test coverage area, run:
+```js
+yarn run test:coverage
+```
+and open the index.html file found in /solid-api/coverage in the browser and navigate to the use case that wants to see test coverage with each run
