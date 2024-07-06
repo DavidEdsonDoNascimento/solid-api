@@ -8,7 +8,7 @@ Application for gym control
 
 ### Functional Requirements
 
-- [ ] It must be possible to register;
+- [x] It must be possible to register;
 - [ ] It must be possible to authenticate
 - [ ] It must be possible to obtain the profile of a logged in user;
 - [ ] It must be possible to obtain the number of check-ins performed by the logged in user;
@@ -20,7 +20,7 @@ Application for gym control
 
 ### Business rules
 
-- [ ] The user must not be able to register with a duplicate email;
+- [x] The user must not be able to register with a duplicate email;
 - [ ] The user cannot do 2 check-ins on the same day;
 - [ ] The user cannot check in if they are not close (100m) to the gym;
 - [ ] Check-in can only be validated up to 20 minutes after it is created;
@@ -29,8 +29,8 @@ Application for gym control
 
 ### Non-functional requirements
 
-- [ ] The user password must be encrypted;
-- [ ] Application data needs to be persisted in a PostgreSQL database;
+- [x] The user password must be encrypted;
+- [x] Application data needs to be persisted in a PostgreSQL database;
 - [ ] All data lists must be paginated with 20 items per page;
 - [ ] The user must be identified by a JWT (JSON Web Token)
 
