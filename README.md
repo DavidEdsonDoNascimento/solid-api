@@ -56,27 +56,32 @@ docker compose stop
 ```
 
 #### run migrations
-```js
+```ch
 yarn prisma migrate dev
 ```
 
 #### run project
-```js
+```ch
 yarn dev
 ```
 
 #### to view database data through the prisma
-```js
+```ch
 yarn prisma studio
 ```
 
 #### run tests
-```js
+```ch
 yarn tests
 ```
 
 ##### To find out the test coverage area, run:
-```js
+```ch
 yarn run test:coverage
 ```
 and open the index.html file found in /solid-api/coverage in the browser and navigate to the use case that wants to see test coverage with each run
+
+#### for visual testing
+```ch
+yarn run test:ui
+```

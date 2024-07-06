@@ -11,13 +11,15 @@
     "start": "node build/server.js",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
   },
   "devDependencies": {
     "@eslint/js": "9.6.0",
     "@types/bcryptjs": "2.4.6",
     "@types/node": "18.14.1",
     "@vitest/coverage-v8": "1.6.0",
+    "@vitest/ui": "1.6.0",
     "eslint": "9.x",
     "globals": "15.7.0",
     "prisma": "5.16.1",

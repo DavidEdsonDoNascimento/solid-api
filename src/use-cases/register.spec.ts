@@ -40,7 +40,7 @@ describe("Register Use Case", () => {
     expect(isPasswordCorrectlyHashed).toBe(true);
   });
 
-  it.only("should not be able to register with same email twice", async () => {
+  it("should not be able to register with same email twice", async () => {
     // creating a fictitious IUserRepository instance so that tests are not coupled to Prisma
     // consequently without using the database, testing only the functionality and focusing on what really matters,
     // which is ensuring that the functionality is doing what it should do

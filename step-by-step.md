@@ -112,3 +112,9 @@ and configured vite.config.ts, test and test:watch in package.json
 **link to the article In Memory Test:** https://martinfowler.com/bliki/InMemoryTestDatabase.html
 
 This pattern was used in the creation of the repository found at: **src/repositories/in-memory**
+
+### other dependencies installed for visual testing
+```ch
+yarn add @vitest/ui -D
+```
+added script test:ui in package.json
