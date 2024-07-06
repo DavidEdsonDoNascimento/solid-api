@@ -7,7 +7,7 @@ interface IUser {
   checkins?: any[];
 }
 
-interface RegisterUseCaseRequest {
+interface IRegisterUseCaseRequest {
   name: string;
   email: string;
   password: string;
@@ -18,13 +18,13 @@ interface IUsersRepository {
   findByEmail(email: string): Promise<IUser | null>;
 }
 
-interface RegisterUseCaseResponse {
+interface IRegisterUseCaseResponse {
   user: IUser;
 }
 
 export {
   IUser,
-  RegisterUseCaseRequest,
+  IRegisterUseCaseRequest,
   IUsersRepository,
-  RegisterUseCaseResponse,
+  IRegisterUseCaseResponse,
 };
