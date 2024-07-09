@@ -1,4 +1,5 @@
 import { IUser, IUsersRepository } from "@/interfaces/user";
+import { randomUUID } from "node:crypto";
 
 class InMemoryUsersRepository implements IUsersRepository {
   private users: IUser[] = [];
@@ -11,7 +12,7 @@ class InMemoryUsersRepository implements IUsersRepository {
   async create(data: IUser): Promise<IUser> {
     const user: IUser = {
       ...data,
-      id: "user-1",
+      id: randomUUID(),
       created_at: new Date(),
       checkins: [],
     };

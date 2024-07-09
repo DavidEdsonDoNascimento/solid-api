@@ -20,7 +20,7 @@ describe("Authenticate Use Case", () => {
   });
 
   it("should be able to authenticate", async () => {
-    usersRepository.create({
+    await usersRepository.create({
       name: "John Doe",
       email: "john.doe@example.com",
       password_hash: await hash("password123", 6),
