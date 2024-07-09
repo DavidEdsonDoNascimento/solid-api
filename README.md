@@ -9,7 +9,7 @@ Application for gym control
 ### Functional Requirements
 
 - [x] It must be possible to register;
-- [ ] It must be possible to authenticate
+- [x] It must be possible to authenticate
 - [ ] It must be possible to obtain the profile of a logged in user;
 - [ ] It must be possible to obtain the number of check-ins performed by the logged in user;
 - [ ] It must be possible to obtain your check-in history;
