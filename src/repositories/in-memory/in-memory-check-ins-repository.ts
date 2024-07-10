@@ -1,4 +1,5 @@
 import { ICheckIn, ICheckInsRepository } from "@/interfaces/check-in";
+import dayjs from "dayjs";
 import { randomUUID } from "node:crypto";
 
 export class InMemoryCheckInsRepository implements ICheckInsRepository {
@@ -8,9 +9,18 @@ export class InMemoryCheckInsRepository implements ICheckInsRepository {
     userId: string,
     date: Date
   ): Promise<ICheckIn | null> {
-    const checkInsOnDay = this.checkIns.find(
-      (checkIn) => checkIn.user_id === userId
-    );
+    const startOfTheDay = dayjs(date).startOf("date");
+    const endOfTheDay = dayjs(date).endOf("date");
+
+    const checkInsOnDay = this.checkIns.find((checkIn) => {
+      const checkInDate = dayjs(checkIn.created_at);
+
+      const isOnSameDay =
+        checkInDate.isAfter(startOfTheDay) && checkInDate.isBefore(endOfTheDay);
+
+      return checkIn.user_id === userId && isOnSameDay;
+    });
+
     return checkInsOnDay || null;
   }
 
