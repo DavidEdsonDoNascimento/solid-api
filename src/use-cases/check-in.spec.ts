@@ -3,7 +3,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { CheckInUseCase } from "./check-in";
 import { InMemoryCheckInsRepository } from "@/repositories/in-memory/in-memory-check-ins-repository";
 import { InMemoryGymsRepository } from "@/repositories/in-memory/in-memory-gyms-repository";
-import { IGymsRepository } from "@/interfaces/gym";
 
 let checkInsRepository: ICheckInsRepository;
 let gymsRepository: InMemoryGymsRepository;
@@ -38,8 +37,6 @@ describe("Check-in Use Case", () => {
       userLatitude: -26.6374551,
       userLongitude: -48.6839573,
     });
-
-    console.log(checkIn.created_at);
 
     expect(checkIn.id).toEqual(expect.any(String));
   });

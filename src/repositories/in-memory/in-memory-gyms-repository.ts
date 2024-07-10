@@ -1,6 +1,5 @@
 import { IGym, IGymsRepository } from "@/interfaces/gym";
-import { prisma } from "@/lib/prisma";
-import { randomUUID } from "crypto";
+import { randomUUID } from "node:crypto";
 
 export class InMemoryGymsRepository implements IGymsRepository {
   public gyms: IGym[] = [];
