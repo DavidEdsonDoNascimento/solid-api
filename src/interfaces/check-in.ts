@@ -13,5 +13,6 @@ interface ICheckIn {
 
 interface ICheckInsRepository {
   create(data: ICheckIn): Promise<ICheckIn>;
+  findByUserIdOnDate(userId: string, date: Date): Promise<ICheckIn | null>;
 }
 export { ICheckIn, ICheckInsRepository };
