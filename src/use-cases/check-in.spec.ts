@@ -81,8 +81,8 @@ describe("Check-in Use Case", () => {
     const { checkIn } = await sut.execute({
       gymId: "gym-1",
       userId: "user-1",
-      userLatitude: -26.63846105293923,
-      userLongitude: -48.69338651802824,
+      userLatitude: -26.6374551,
+      userLongitude: -48.6839573,
     });
 
     expect(checkIn.id).toEqual(expect.any(String));

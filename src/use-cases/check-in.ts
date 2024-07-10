@@ -1,6 +1,7 @@
 import { ICheckIn, ICheckInsRepository } from "@/interfaces/check-in";
 import { IGymsRepository } from "@/interfaces/gym";
 import { ResourceNotFoundError } from "./errors/resource-not-found-error";
+import { getDistanceBetweenCoordinates } from "@/utils/get-distance-between-coordinates";
 
 interface ICheckInUseCaseRequest {
   userId: string;
@@ -32,6 +33,22 @@ export class CheckInUseCase {
     }
 
     // calculate distance between user and gym
+    const distance = getDistanceBetweenCoordinates(
+      {
+        latitude: userLatitude,
+        longitude: userLongitude,
+      },
+      {
+        latitude: gym.latitude,
+        longitude: gym.longitude,
+      }
+    );
+
+    const MAX_DISTANCE_IN_KILOMETERS = 0.1; // 100 meters
+    // 0.1 equals 100/1000 where 1000 equals 1km
+    if (distance > MAX_DISTANCE_IN_KILOMETERS) {
+      throw new Error();
+    }
 
     const checkInOnSameDay = await this.checkInsRepository.findByUserIdOnDate(
       userId,
