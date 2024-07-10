@@ -1,10 +1,15 @@
 interface IGym {
   id?: string;
   name: string;
-  description?: string;
-  phone?: string;
+  description: string | null;
+  phone: string | null;
   latitude: number;
   longitude: number;
 }
 
-export { IGym };
+interface IGymsRepository {
+  create(data: IGym): Promise<IGym>;
+  findById(id: string): Promise<IGym | null>;
+}
+
+export { IGym, IGymsRepository };
