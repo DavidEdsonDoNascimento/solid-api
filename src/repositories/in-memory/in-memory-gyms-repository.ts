@@ -2,12 +2,12 @@ import { IGym, IGymsRepository } from "@/interfaces/gym";
 import { randomUUID } from "node:crypto";
 
 export class InMemoryGymsRepository implements IGymsRepository {
-  public gyms: IGym[] = [];
+  private gyms: IGym[] = [];
 
   async create(data: IGym): Promise<IGym> {
     const gym = {
       ...data,
-      id: randomUUID(),
+      id: data.id ?? randomUUID(),
     };
     this.gyms.push(gym);
     return gym;
