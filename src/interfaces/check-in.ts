@@ -1,4 +1,5 @@
 import { IGym } from "./gym";
+import { IPagination } from "./pagination";
 import { IUser } from "./user";
 
 interface ICheckIn {
@@ -14,5 +15,9 @@ interface ICheckIn {
 interface ICheckInsRepository {
   create(data: ICheckIn): Promise<ICheckIn>;
   findByUserIdOnDate(userId: string, date: Date): Promise<ICheckIn | null>;
+  findManyByUserId(
+    userId: string,
+    pagination: IPagination
+  ): Promise<ICheckIn[]>;
 }
 export { ICheckIn, ICheckInsRepository };

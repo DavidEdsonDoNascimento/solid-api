@@ -1,9 +1,22 @@
 import { ICheckIn, ICheckInsRepository } from "@/interfaces/check-in";
+import { IPagination } from "@/interfaces/pagination";
 import dayjs from "dayjs";
 import { randomUUID } from "node:crypto";
 
 export class InMemoryCheckInsRepository implements ICheckInsRepository {
   private checkIns: ICheckIn[] = [];
+  async findManyByUserId(
+    userId: string,
+    pagination: IPagination
+  ): Promise<ICheckIn[]> {
+    const page = pagination?.page ?? 1;
+    const maxNumberItems = pagination?.maximumNumberOfItems ?? 10;
+
+    const checkIns = this.checkIns
+      .filter((checkIn) => checkIn.user_id === userId)
+      .slice((page - 1) * maxNumberItems, page * maxNumberItems);
+    return checkIns ?? null;
+  }
 
   async findByUserIdOnDate(
     userId: string,
