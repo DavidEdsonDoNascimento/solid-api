@@ -26,6 +26,10 @@ describe("Fetch user check-ins history use case", () => {
 
     const { checkIns } = await sut.execute({
       userId: "user-1",
+      pagination: {
+        page: 1,
+        maximumNumberOfItems: 20,
+      },
     });
 
     expect(checkIns).toHaveLength(2);
