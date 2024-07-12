@@ -1,9 +1,31 @@
-import { IGym, IGymsRepository } from "@/interfaces/gym";
+import { IFindManyNearbyParams, IGym, IGymsRepository } from "@/interfaces/gym";
 import { IPagination } from "@/interfaces/pagination";
+import { getDistanceBetweenCoordinates } from "@/utils/get-distance-between-coordinates";
 import { randomUUID } from "node:crypto";
 
 export class InMemoryGymsRepository implements IGymsRepository {
   private gyms: IGym[] = [];
+
+  async findManyNearby(params: IFindManyNearbyParams): Promise<IGym[]> {
+    const { latitude, longitude, distanceLimitInKm } = params;
+
+    const gyms = this.gyms.filter((gym) => {
+      const distance = getDistanceBetweenCoordinates(
+        {
+          latitude: latitude,
+          longitude: longitude,
+        },
+        {
+          latitude: gym.latitude,
+          longitude: gym.longitude,
+        }
+      );
+
+      return distance < distanceLimitInKm;
+    });
+
+    return gyms;
+  }
 
   async searchMany(search: string, pagination: IPagination): Promise<IGym[]> {
     const page = pagination?.page ?? 1;

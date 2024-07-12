@@ -9,10 +9,17 @@ interface IGym {
   longitude: number;
 }
 
+interface IFindManyNearbyParams {
+  latitude: number;
+  longitude: number;
+  distanceLimitInKm: number;
+}
+
 interface IGymsRepository {
   create(data: IGym): Promise<IGym>;
   findById(id: string): Promise<IGym | null>;
   searchMany(search: string, pagination: IPagination): Promise<IGym[]>;
+  findManyNearby(params: IFindManyNearbyParams): Promise<IGym[]>;
 }
 
-export { IGym, IGymsRepository };
+export { IGym, IGymsRepository, IFindManyNearbyParams };
