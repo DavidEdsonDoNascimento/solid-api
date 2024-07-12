@@ -14,6 +14,8 @@ interface ICheckIn {
 
 interface ICheckInsRepository {
   create(data: ICheckIn): Promise<ICheckIn>;
+  update(data: ICheckIn): Promise<ICheckIn>;
+  findById(id: string): Promise<ICheckIn | null>;
   findByUserIdOnDate(userId: string, date: Date): Promise<ICheckIn | null>;
   findManyByUserId(
     userId: string,
