@@ -1,8 +1,36 @@
 import { ICheckIn, ICheckInsRepository } from "@/interfaces/check-in";
 import { IPagination } from "@/interfaces/pagination";
 import { prisma } from "@/lib/prisma";
+import dayjs from "dayjs";
 
-export class PrismCheckInsRepository implements ICheckInsRepository {
+export class PrismaCheckInsRepository implements ICheckInsRepository {
+  async update(data: ICheckIn): Promise<ICheckIn> {
+    return await prisma.checkIn.update({
+      where: {
+        id: data.id,
+      },
+      data: {
+        validated_at: data.validated_at,
+      },
+    });
+  }
+  async findById(id: string): Promise<ICheckIn | null> {
+    const checkIn = await prisma.checkIn.findUnique({
+      where: {
+        id,
+      },
+    });
+
+    return checkIn;
+  }
+  async countByUserId(userId: string): Promise<number> {
+    return await prisma.checkIn.count({
+      where: {
+        user_id: userId,
+      },
+    });
+  }
+
   async findManyByUserId(
     userId: string,
     pagination: IPagination
@@ -33,12 +61,19 @@ export class PrismCheckInsRepository implements ICheckInsRepository {
     userId: string,
     date: Date
   ): Promise<ICheckIn | null> {
+    const startOfTheDay = dayjs(date).startOf("date");
+    const endOfTheDay = dayjs(date).endOf("date");
+
     const checkIn = await prisma.checkIn.findFirst({
       where: {
         user_id: userId,
-        created_at: date,
+        created_at: {
+          gte: startOfTheDay.toDate(),
+          lte: endOfTheDay.toDate(),
+        },
       },
     });
-    return checkIn || null;
+
+    return checkIn;
   }
 }
