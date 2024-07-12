@@ -19,5 +19,6 @@ interface ICheckInsRepository {
     userId: string,
     pagination: IPagination
   ): Promise<ICheckIn[]>;
+  countByUserId(userId: string): Promise<number>;
 }
 export { ICheckIn, ICheckInsRepository };

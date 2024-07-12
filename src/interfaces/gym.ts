@@ -1,3 +1,5 @@
+import { IPagination } from "./pagination";
+
 interface IGym {
   id?: string;
   name: string;
@@ -10,6 +12,7 @@ interface IGym {
 interface IGymsRepository {
   create(data: IGym): Promise<IGym>;
   findById(id: string): Promise<IGym | null>;
+  searchMany(search: string, pagination: IPagination): Promise<IGym[]>;
 }
 
 export { IGym, IGymsRepository };
